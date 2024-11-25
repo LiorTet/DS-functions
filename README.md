@@ -1,2 +1,2 @@
 # DS-functions
-Functions for analyzing data
+Functions for Data Analyisis general.
