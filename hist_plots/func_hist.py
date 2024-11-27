@@ -38,7 +38,7 @@ def plot_count_distribution(data_series,
   # Adjust layout and display the plot
   plt.tight_layout()
   plt.show()
-    
+
 # Create histogram data with custom bins to numerical feature
 def calculate_price_histogram(df,
                               price_column='price',
@@ -57,10 +57,10 @@ def calculate_price_histogram(df,
   # Perform binning and calculate counts in each bin
   binned_data = pd.cut(df[price_column], bins=bins)
   count = binned_data.value_counts(sort=False)
-  
+
   # Convert to DataFrame for easier access and manipulation
   histogram_df = pd.DataFrame({'bin_range': count.index, 'count': count.values})
-  
+
   return histogram_df
 
 # Create histogram for categorical feature
@@ -80,15 +80,15 @@ def calculate_brand_frequency(df,
   """
   # Get the count of each brand
   brand_counts = df[brand_column].value_counts()
-  
+
   # If top_n is specified, limit to the top N brands
   if top_n:
       brand_counts = brand_counts.head(top_n)
-  
+
   # Convert to DataFrame for easier handling
   brand_frequency_df = brand_counts.reset_index()
   brand_frequency_df.columns = [brand_column, 'count']
-  
+
   return brand_frequency_df
 
 # Histogram for categorical feature horizontal
@@ -113,9 +113,9 @@ def plot_brand_frequency(brand_frequency_df,
 
   # Plotting
   plt.figure(figsize=figsize)
-  plt.barh(brand_frequency_df[brand_column], 
-            brand_frequency_df['count'], 
-            color='skyblue', 
+  plt.barh(brand_frequency_df[brand_column],
+            brand_frequency_df['count'],
+            color='skyblue',
             edgecolor='black')
 
   # Set labels and title
