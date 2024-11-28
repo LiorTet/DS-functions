@@ -2,13 +2,15 @@ import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 
 
-def plot_brand_wordcloud(df,
-                          brand_column='brand',
-                          top_n=None,
-                          width=800,
-                          height=400,
-                          plot_size=(10, 6),
-                          title='Brand Frequency Word Cloud'):
+def plot_brand_wordcloud(
+    df,
+    brand_column="brand",
+    top_n=None,
+    width=800,
+    height=400,
+    plot_size=(10, 6),
+    title="Brand Frequency Word Cloud",
+):
     """
     Plots a word cloud where the size of each brand is proportional to its frequency.
 
@@ -35,22 +37,27 @@ def plot_brand_wordcloud(df,
     brand_freq_dict = brand_frequency.to_dict()
 
     # Create the word cloud
-    wordcloud = WordCloud(width=width, height=height, background_color='white').generate_from_frequencies(brand_freq_dict)
+    wordcloud = WordCloud(
+        width=width, height=height, background_color="white"
+    ).generate_from_frequencies(brand_freq_dict)
 
     # Plot the word cloud
     plt.figure(figsize=plot_size)
-    plt.imshow(wordcloud, interpolation='bilinear')
-    plt.axis('off')  # Hide the axes for better aesthetics
+    plt.imshow(wordcloud, interpolation="bilinear")
+    plt.axis("off")  # Hide the axes for better aesthetics
     plt.title(title)
     plt.show()
 
+
 # X-Y plot to compare two variables
-def plot_customer_event_counts(customer_event_counts,
-                               column_1='add2cart_count',
-                               column_2='wishlist_count',
-                               label='Equal Add-to-Cart & Wishlist',
-                               title='Customer Event Counts: Add-to-Cart vs. Wishlist',
-                               axis_limit=100):
+def plot_customer_event_counts(
+    customer_event_counts,
+    column_1="add2cart_count",
+    column_2="wishlist_count",
+    label="Equal Add-to-Cart & Wishlist",
+    title="Customer Event Counts: Add-to-Cart vs. Wishlist",
+    axis_limit=100,
+):
     """
     Plots a scatter plot of add2cart_count vs. wishlist_count for each customer,
     with axes limited to a predetermined range.
@@ -73,11 +80,11 @@ def plot_customer_event_counts(customer_event_counts,
         customer_event_counts[column_1],
         customer_event_counts[column_2],
         alpha=0.6,
-        edgecolor='black'
+        edgecolor="black",
     )
 
     # Diagonal reference line (y=x)
-    plt.plot([0, axis_limit], [0, axis_limit], 'r--', label=label)
+    plt.plot([0, axis_limit], [0, axis_limit], "r--", label=label)
 
     # Set plot limits, labels, and title
     plt.xlim(0, axis_limit)
